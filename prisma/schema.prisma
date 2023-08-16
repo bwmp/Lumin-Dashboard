@@ -1,0 +1,31 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
+}
+
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model sessions {
+  sessionId    String    @unique(map: "sessionId")
+  accessToken  String    @unique(map: "accessToken")
+  refreshToken String?
+  expiresAt    DateTime?
+  scope        String?
+  pfp          String?   @default("https://cdn.discordapp.com/embed/avatars/0.png")
+  accent       String?
+}
+
+model settings {
+  guildId      String  @unique(map: "guildId")
+  logChannelID String  @default("false")
+  nsfw         Boolean @default(false)
+  leavemessage String  @default("{\"message\":\"\",\"channel\":\"false\"}")
+  joinmessage  String  @default("{\"message\":\"\",\"channel\":\"false\"}")
+  membercount  String  @default("{\"channel\": \"false\",\"text\": \"Members: {COUNT}\"}")
+  staffRole    String  @default("false")
+  counting     String  @default("{\"channel\": \"false\",\"countnumber\": \"1\",\"countmax\": \"1\"}") @db.LongText
+}

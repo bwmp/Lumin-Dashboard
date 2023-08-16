@@ -1,0 +1,156 @@
+/**
+ * Tailwind CSS imports
+ * View the full documentation at https://tailwindcss.com
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number'] {
+    -webkit-appearance: none;
+    -moz-appearance: textfield !important;
+    appearance: none;
+    margin: 0;
+  }
+}
+
+@layer utilities {
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
+
+html {
+  overflow: overlay;
+  background-color: hsl(0deg, 0%, 5%);
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+*::-webkit-scrollbar {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: #00000000;
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #ffffff20;
+  border-radius: 2px;
+}
+
+/* NAVBAR TRANSITION */
+nav {
+  view-transition-name: nav;
+}
+
+/* MAIN TRANSITION */
+main {
+  view-transition-name: root;
+}
+
+::view-transition-old(root) {
+  animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-bottom;
+}
+
+::view-transition-new(root) {
+  animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-top;
+}
+
+/* GUILD ICON TRANSITION */
+.pic-link[aria-pressed="true"] .pic,
+.pic-prev {
+  view-transition-name: picture;
+}
+
+::view-transition-old(picture),
+::view-transition-new(picture) {
+  animation: none;
+  mix-blend-mode: normal;
+  width: 100%;
+}
+
+/* SIDEBAR TRANSITION */
+
+aside {
+  view-transition-name: sidebar;
+}
+
+/* sm */
+@media (min-width: 640px) {
+
+  /* Entry transition */
+  ::view-transition-new(sidebar):only-child {
+    animation: 300ms cubic-bezier(0, 0, 0.2, 1) both fade-in,
+      300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-left;
+  }
+
+  /* Exit transition */
+  ::view-transition-old(sidebar):only-child {
+    animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+      300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+  }
+}
+
+@media (prefers-reduced-motion) {
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-from-top {
+  from {
+    transform: translateY(30px);
+    scale: 0.95;
+  }
+}
+
+@keyframes slide-to-bottom {
+  to {
+    transform: translateY(-30px);
+    scale: 0.95;
+  }
+}
+
+@keyframes slide-to-left {
+  to {
+    transform: translateX(-30px);
+  }
+}
+
+@keyframes slide-from-left {
+  from {
+    transform: translateX(-30px);
+  }
+}
