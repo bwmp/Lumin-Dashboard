@@ -1,6 +1,7 @@
 import { component$, Slot, useStore } from '@builder.io/qwik';
 import { Menu } from 'qwik-ionicons';
 import { Button } from './elements/Button';
+import { Link } from '@builder.io/qwik-city';
 
 export default component$(({ guild }: any) => {
   const menuStore = useStore({
@@ -40,9 +41,9 @@ export const MenuCategory = component$(({ name }: any) => {
 
 export const MenuItem = component$(({ href, guild }: any) => {
   return (
-    <a href={ guild ? `/dashboard/${guild.id}/${href}` : href} class="min-w-fit transition hover:bg-gray-700 hover:text-white hover:drop-shadow-2xl border border-transparent hover:border-gray-600 px-2 py-1 rounded-lg text-md flex items-center gap-2">
+    <Link href={ guild ? `/dashboard/${guild.id}/${href}` : href} class="min-w-fit transition hover:bg-gray-700 hover:text-white hover:drop-shadow-2xl border border-transparent hover:border-gray-600 px-2 py-1 rounded-lg text-md flex items-center gap-2">
       <Slot />
-    </a>
+    </Link>
   );
 });
 
