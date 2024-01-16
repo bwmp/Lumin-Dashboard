@@ -52,7 +52,7 @@ export default component$(() => {
           Licensing <span class="text-luminescent-400" style={{ filter: 'drop-shadow(0 0 2rem #CB6CE6);' }}>Information</span>
         </h1>
         <br />
-        <a class="mt-5 text-2xl underline text-indigo-500" style={{ filter: 'drop-shadow(0 0 2rem rgb(99 102 241));' }} href="https://github.com/Oli-idk/Lumin/blob/main/LICENSE">
+        <a class="mt-5 text-2xl underline text-indigo-500" style={{ filter: 'drop-shadow(0 0 2rem rgb(99 102 241));' }} href="https://github.com/bwmp/Lumin/blob/main/LICENSE">
           GNU Affero General Public License v3.0
         </a>
       </div>
